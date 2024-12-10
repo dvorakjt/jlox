@@ -81,6 +81,8 @@ class Scanner {
             case '/' :
                 if(match('/')) {
                     while(peek() != '\n' && !isAtEnd()) advance();
+                } else if(match('*')) {
+                    multilineComment();
                 } else {
                     addToken(SLASH);
                 }
@@ -191,5 +193,35 @@ class Scanner {
 
     private boolean isAlphaNumeric(char c) {
         return isAlpha(c) || isDigit(c);
+    }
+
+    private void multilineComment() {
+        int nestingLevel = 1;
+
+        while(nestingLevel > 0 && !isAtEnd()) {
+            char next = advance();
+
+            if(isAtEnd()) {
+
+            }
+
+            switch (next) {
+                case '*':
+                    if(peek() == '/') {
+                        nestingLevel--;
+                        advance();
+                    }
+                    break;
+                case '\n':
+                    line++;
+                    break;
+                case '/':
+                    if(peek() == '*') {
+                        nestingLevel++;
+                        advance();
+                    }
+                    break;
+            }
+        }
     }
 }

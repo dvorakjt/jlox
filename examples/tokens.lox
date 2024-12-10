@@ -1,0 +1,24 @@
+// This is a comment!
+class MyClass {
+  greeting = "Hello!";
+  num = 42;
+}
+
+fun greet(greeting) {
+  print greeting;
+}
+
+var frenchGreeting = "Bonjour!";
+
+greet(frenchGreeting);
+greet(MyClass().greeting);
+
+/*
+  This is a multiline comment
+*/
+
+/*/*/*
+    This is a nested multiline comment
+*/*/*/
+
+/* This is a dangling multiline comment
