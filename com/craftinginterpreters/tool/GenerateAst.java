@@ -65,7 +65,7 @@ public class GenerateAst {
         // Visitor pattern.
         writer.println();
         writer.println(indent("@Override", 2));
-        writer.println(indent("<R> R accept(Visitor<T> visitor) {", 2));
+        writer.println(indent("<R> R accept(Visitor<R> visitor) {", 2));
         writer.println(indent("return visitor.visit" + className + baseName + "(this);", 3));
         writer.println(indent("}", 2));
 
